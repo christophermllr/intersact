@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+
+<!-- meta data -->
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="US Foods Mobile Ordering"/>
+
+<title>IntersACT</title>
+
+<!-- ios meta rules -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="HandheldFriendly" content="true" />
+<meta name="format-detection" content="telephone=no">
+<link rel="shortcut icon" href="favicon.ico" />
+
+<!-- ios touch images -->
+<link rel="apple-touch-icon-precomposed" href="images/touch-icon-iphone.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch-icon-ipad.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch-icon-iphone4.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch-icon-ipad3.png" />
+
+<!-- viewport rules -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
+
+<style type="text/css">
+
+html, body {
+  font-family: "Helvetica Neue", Helvetica;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+header {
+  background: #3B84BF;
+  padding: 80px 0;
+  width: 100%;
+}
+
+.search .search-logo {
+  font-family: "Helvetica Neue", Helvetica;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 56px;
+  text-align: center;
+}
+
+.search .tag-line {
+  color: #FFF;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.autocomplete {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.autocomplete:first-child {
+  margin-top: 30px;
+}
+
+.autocomplete .search-field {
+  font-size: 18px;
+  border: 1px solid #CCC;
+  padding: 10px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  width: 100%;
+}
+
+.autocomplete .search-field:focus {
+  outline: none;
+  border-color: #5BABF2;
+  -webkit-box-shadow: 0px 0px 5px rgba(91, 171, 242, 0.75);
+  -moz-box-shadow:    0px 0px 5px rgba(91, 171, 242, 0.75);
+  box-shadow:         0px 0px 5px rgba(91, 171, 242, 0.75);
+}
+
+.autocomplete .result-list {
+  border: 1px solid #CCC;
+  position: absolute;
+  width: 100%;
+  -webkit-box-shadow: 0px 3px 5px rgba(50, 50, 50, 0.5);
+  -moz-box-shadow:    0px 3px 5px rgba(50, 50, 50, 0.5);
+  box-shadow:         0px 3px 5px rgba(50, 50, 50, 0.5);
+}
+
+.search .plus-icon {
+  
+}
+
+.search .submit-button {
+  
+}
+
+</style>
+
+</head>
+
+<body ontouchstart>
+
+  <div class="search">
+    
+    <header>
+      <div class="search-logo">Intersact</div>
+      <div class="tag-line">This is a tag line</div>
+    </header>
+    
+    <section>
+    
+      <div class="autocomplete">
+        <input type="text" name="autocomplete" class="search-field" placeholder="Enter a Movie, TV Show, etc" />
+        <ul class="result-list">
+          <li>Result One</li>
+          <li>Result Two</li>
+          <li>Result Three</li>
+          <li>Result Four</li>
+        </ul>
+      </div>
+      
+      <div class="plus-icon"></div>
+      
+      <div class="autocomplete">
+        <input type="text" name="autocomplete" />
+        <ul>
+          <li>Result One</li>
+          <li>Result Two</li>
+          <li>Result Three</li>
+          <li>Result Four</li>
+        </ul>
+      </div>
+      
+      <input type="button" class="submit-button" value="Go!" />
+    
+    </section>
+    
+  </div>  
+  
+</body>
+
+</html>
