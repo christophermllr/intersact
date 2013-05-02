@@ -66,7 +66,7 @@ header {
 }
 
 .search .plus-icon {
-  background: url(icon@2x.png) center center no-repeat;
+  background: url(../images/icon@2x.png) center center no-repeat;
   height: 100px;
   margin: 20px auto;
   width: 100px;
@@ -151,7 +151,7 @@ header {
   }
   
   .search .plus-icon {
-    background: url(iconSmall@2x.png) center center no-repeat;
+    background: url(../images/iconSmall@2x.png) center center no-repeat;
     height: 60px;
     width: 60px;
     -webkit-background-size: 60px 60px;
@@ -179,7 +179,7 @@ header {
   }
   
   .search .plus-icon {
-    background: url(iconSmall@2x.png) center center no-repeat;
+    background: url(../images/iconSmall@2x.png) center center no-repeat;
     height: 60px;
     width: 60px;
     -webkit-background-size: 60px 60px;

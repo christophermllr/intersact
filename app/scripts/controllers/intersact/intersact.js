@@ -63,7 +63,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
      */
     getBindings: function() {
       return {
-        'search': { 'search': this.onSearch },
+        'search': { 'search': this.onSearch, 'movie-one': this.onMovieOne, 'movie-two': this.onMovieTwo },
         'results': { 'back': this.onBack }
       };
     },
@@ -75,9 +75,6 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     getRoutes: function() {
       
       function onSearch(current) {
-
-        console.log('home loaded');
-
         
         // create the order list view controller
         var searchViewController = new SearchViewController(this, this.searchView);
@@ -138,6 +135,15 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     },
 
     //Event handlers
+    
+    onEnter: function(e) {
+    
+      e.stopPropagation();
+      
+      console.log('ke', e.data);
+    
+    },
+    
     onSearch: function(e) {
 
       var movies = e.data;
@@ -156,23 +162,46 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         
       });
 
-
-
     },
 
-    onTypeAhead: function(e) {
-
-      var keyword = e.data;
-
+    onMovieOne: function(e) {
+      
+      e.stopPropagation();
+      
+      var keyword = e.data, that = this;
+      
       // fetch customers
       this.intersactRepository.getMovies(keyword).then(function(movies) {
-        console.log(movies);      
+        
+        that.get('search').getView('movie1').setResults(movies);
+                  
       }, function() {
 
         // show error
         console.log('error');
         
       });
+      
+    },
+    
+    onMovieTwo: function(e) {
+      
+      e.stopPropagation();
+            
+      var keyword = e.data, that = this;
+      
+      // fetch customers
+      this.intersactRepository.getMovies(keyword).then(function(movies) {
+                
+        that.get('search').getView('movie2').setResults(movies);
+                  
+      }, function() {
+
+        // show error
+        console.log('error');
+        
+      });
+      
     },
 
     onBack: function(e) {

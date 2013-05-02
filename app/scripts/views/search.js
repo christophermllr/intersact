@@ -46,9 +46,10 @@ Clementine.add('klm.views.search', function(exports) {
     getBindings: function() {
       return {        
         'search-btn': { 'touchclick': this.$onSearch },
+        'movie1': { 'enter': this.onMovieOneEnter },
+        'movie2': { 'enter': this.onMovieTwoEnter }
       };
     },
-      
       
     $onSearch: function(e) {
       e.stopPropagation();
@@ -63,6 +64,32 @@ Clementine.add('klm.views.search', function(exports) {
       }
 
       this.fire('search', movies);
+    },
+    
+    setMovieOne: function(name, id) {
+      this.getView('movie1').setValue(name);
+      this.getView('movie1').target.attr('itemid', id);
+    },
+    
+    setMovieTwo: function(name, id) {
+      this.getView('movie2').setValue(name);
+      this.getView('movie2').target.attr('itemid', id);
+    },
+    
+    onMovieOneEnter: function(e) {
+      
+      e.stopPropagation();
+      
+      this.fire('movie-one', e.data);
+      
+    },
+    
+    onMovieTwoEnter: function(e) {
+      
+      e.stopPropagation();
+      
+      this.fire('movie-two', e.data);
+      
     }
     
   });

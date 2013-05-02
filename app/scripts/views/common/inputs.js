@@ -144,6 +144,13 @@ Clementine.add('usf.views.common.inputs', function(exports) {
       
     },
     
+    getBindings: function() {
+      return {
+        'input-box': { 'input': this.$onKeyPress, 'blur': this.$onBlur },
+        'clear-btn': { 'touchclick': this.$onClear }
+      };
+    },
+    
 
     // Configuration
 
@@ -186,6 +193,28 @@ Clementine.add('usf.views.common.inputs', function(exports) {
         this.fire('enter', el.val());
         el.blur();
       }
+    },
+    
+    $onBlur: function(e) {
+    
+      //this.getElement('result-list').hide();
+    
+    },
+    
+    setResults: function(itemlist) {
+    
+      var list = this.getElement('result-list');
+      
+      list.empty();
+    
+      list.show();
+    
+      for (var i=0; i<itemlist.length; i++) {
+        
+        list.append('<li itemid="' + itemlist[i].id + '">' + itemlist[i].name + ' (' + itemlist[i].year + ')</li>');
+        
+      }
+    
     }
 
   });
