@@ -53,7 +53,7 @@ Clementine.add('intersact.app', function(exports) {
     },
     
     render: function() {
-      var intersactRepository = new intersactRepository(localStorage);
+      var intersactRepository = new IntersActRepository(localStorage);
       this.root = new IntersActController(intersactRepository);
       this.root.view.appendTo(document.body);
       this.root.load();

@@ -1,7 +1,5 @@
 /**
- sales-tools.js | 8.7.2012 | v1.0
- USFoods Mobile Ordering
- Copyright 2012. US Foods Inc.
+ intersact.js | 8.7.2012 | v1.0
  @module Sales
 */
 

@@ -43,6 +43,11 @@
 <script src="scripts/views/search.js" type="text/javascript"></script>
 <script src="scripts/views/results.js" type="text/javascript"></script>
 <script src="scripts/controllers/intersact/intersact.js" type="text/javascript"></script>
+<script src="scripts/controllers/core/controller.js" type="text/javascript"></script>
+<script src="scripts/controllers/core/navigation.js" type="text/javascript"></script>
+<script src="scripts/controllers/core/modal.js" type="text/javascript"></script>
+<script src="scripts/repositories/intersact.js" type="text/javascript"></script>
+<script src="scripts/services/intersact.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
@@ -54,7 +59,7 @@ Clementine.use('intersact.app', function() {
 
     console.log('doc ready');
     
-    var IntersActApplication = include('IntersAct.app').IntersActApplication;
+    var IntersActApplication = include('intersact.app').IntersActApplication;
     
     var App = new IntersActApplication({
       path: 'http://www.kevinkinnebrew.com/intersact/',
