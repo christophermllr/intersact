@@ -62,36 +62,11 @@ Clementine.use('intersact.app', function() {
     var IntersActApplication = include('intersact.app').IntersActApplication;
     
     var App = new IntersActApplication({
-      path: 'http://www.intersact.kevinkinnebrew.com/',
+      path: 'http://intersact.kevinkinnebrew.com/',
       views: ['search.html', 'results.html']
     });
 
-    // Error Messages
 
-    var ErrorHandler = {
-
-      init: function() {
-        this.target = $("body > .error");
-        this.target.addClass('hidden');
-      },
-
-      show: function(message) {
-        var that = this;
-        message = Translate.ConvertString(message);
-        this.target.text(message);
-        this.target.removeClass('hidden');
-        setTimeout(function() {
-          that.target.addClass('visible');
-        }, 50);
-        setTimeout(function() {
-          that.target.removeClass('visible');
-          setTimeout(function() {
-            that.target.addClass('hidden');
-          }, 500);
-        }, 1800);
-      }
-
-    };
     
   });
   

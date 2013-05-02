@@ -25,14 +25,14 @@ Clementine.add('klm.repositories.intersact', function(exports) {
       
     },
 
-    getActors: function(keyword) {
+    getMovies: function(keyword) {
       
       var that = this;
       
       // create deferred
       var deferred = jQuery.Deferred();
             
-      App.getService('intersact').searchMovies(keyword).then(function(movies) {
+      App.getService('intersact').searchMovies('batman').then(function(movies) {
         
         // return customer list
         deferred.resolve(movies);

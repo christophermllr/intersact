@@ -134,7 +134,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       }, function() {
 
         // show error
-        ErrorHandler.show('Could not load customers');
+        console.log('error');
         
       });
 
