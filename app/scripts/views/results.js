@@ -45,7 +45,7 @@ Clementine.add('klm.views.results', function(exports) {
      */
     getBindings: function() {
       return {        
-        'back': { 'touchclick': this.$onBack }
+        'back-btn': { 'touchclick': this.$onBack }
       };
     },
       

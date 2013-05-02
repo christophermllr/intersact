@@ -46,7 +46,7 @@ Clementine.add('klm.services.intersact', function(exports) {
       };
 
       var map = function(data) {
-        if (token === null) {
+        if (data === null) {
           throw 'Invalid session';
         }
         return data;
@@ -64,7 +64,7 @@ Clementine.add('klm.services.intersact', function(exports) {
       };
 
       var map = function(data) {
-        if (token === null) {
+        if (data === null) {
           throw 'Invalid session';
         }
         return data;

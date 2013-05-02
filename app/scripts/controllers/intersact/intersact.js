@@ -41,7 +41,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       this.intersactRepository = intersactRepository;
        
       // store state
-      
+      this.actors = null;
+
       // create primary view
       this.view = new View('intersact');
 
@@ -89,13 +90,22 @@ Clementine.add('klm.controllers.intersact', function(exports) {
                           
       }
       
-      function onList(current) {
+      function onResults(current) {
+
+        // create the order list view controller
+        var resultsViewController = new ResultsViewController(this, this.resultsView);
+
+        // add the order list view controller
+        this.add('results', resultsViewController);
+                  
+        // push the order list view
+        this.resultsView.appendTo(this.view);
                       
       }
     
       return {
         'search': onSearch,
-        'list': onList,
+        'results': onResults,
       };
       
     },
@@ -126,6 +136,28 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     //Event handlers
     onSearch: function(e) {
 
+      var movies = e.data;
+
+      // fetch customers
+      this.intersactRepository.getActors(movies.movie1, movies.movie2).then(function(actors) {  
+
+        this.actors =  actors;
+
+        this.navigateTo('results');
+
+      }, function() {
+
+        // show error
+        console.log('error');
+        
+      });
+
+
+
+    },
+
+    onTypeAhead: function(e) {
+
       var keyword = e.data;
 
       // fetch customers
@@ -137,9 +169,10 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         console.log('error');
         
       });
+    },
 
-
-
+    onBack: function(e) {
+      this.resultsView.remove();
     }
     
   });  
