@@ -35,7 +35,6 @@
 
 html, body {
   font-family: "Helvetica Neue", Helvetica;
-  height: 100%;
   margin: 0;
   line-height: 1.2;
   padding: 0;
@@ -48,7 +47,7 @@ header {
   width: 100%;
 }
 
-.search .search-logo {
+.search-logo {
   font-family: "Helvetica Neue", Helvetica;
   color: #FFF;
   font-weight: 600;
@@ -56,7 +55,7 @@ header {
   text-align: center;
 }
 
-.search .tag-line {
+.tag-line {
   color: #FFF;
   padding-bottom: 20px;
   text-align: center;
@@ -68,7 +67,6 @@ header {
 }
 
 .autocomplete:first-child {
-  margin-top: 30px;
 }
 
 .autocomplete .search-field {
@@ -111,10 +109,24 @@ header {
   -moz-background-size: 100px 100px;
 }
 
-.search .submit-button {
-  background: ##3B84BF;
+.submit-button[type="button"] {
+  color: #FFF;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: #3B84BF;
   height: 44px;
+  display: block;
+  line-height: 42px;
+  margin: 40px auto;
   width: 600px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.submit-button[type="button"]:hover {
+  background: #306D9D;
 }
 
 ::-webkit-input-placeholder {
@@ -133,48 +145,142 @@ header {
    line-height: 1.2;
 }
 
+.section-container {
+  margin: 30px 0; 
+  width: 100%;
+}
+
+.result-list {
+  margin: 0 auto;
+  list-style: none;
+  width: 600px;
+}
+
+.result-list li {
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #DDD;
+}
+
+.result-list li:first-child {
+  border-top: 1px solid #DDD;
+}
+
+@media screen and (max-width: 640px) {
+  
+  header {
+    padding: 30px 0;
+  }
+  
+  .search-logo {
+    font-size: 42px;
+  }
+  
+  .autocomplete {
+    margin: 0 auto;
+    width: 300px;
+  }
+  
+  .result-list {
+    width: 300px;
+  }
+  
+  .search .plus-icon {
+    background: url(iconSmall@2x.png) center center no-repeat;
+    height: 60px;
+    width: 60px;
+    -webkit-background-size: 60px 60px;
+  }
+  
+  .submit-button[type="button"] {
+    width: 300px;
+  }
+  
+}
+
+@media screen and (max-width: 400px) {
+  
+  header {
+    padding: 20px 0;
+  }
+  
+  .autocomplete {
+    margin: 0 auto;
+    width: 280px;
+  }
+  
+  .result-list {
+    width: 280px;
+  }
+  
+  .search .plus-icon {
+    background: url(iconSmall@2x.png) center center no-repeat;
+    height: 60px;
+    width: 60px;
+    -webkit-background-size: 60px 60px;
+  }
+  
+  .submit-button[type="button"] {
+    width: 280px;
+  }  
+  
+}
+
 </style>
 
 </head>
 
 <body ontouchstart>
 
-  <div class="search">
+  <!--<div class="search">
     
     <header>
       <div class="search-logo">Intersact</div>
-      <div class="tag-line">This is a tag line</div>
+      <div class="tag-line">Cross-reference actors in two movies.</div>
     </header>
     
-    <section>
+    <section class="section-container">
     
       <div class="autocomplete">
-        <input type="text" name="movie-one" class="search-field" placeholder="Enter a Movie, TV Show, etc" required />
-        <ul class="result-list">
-          <li>Result One</li>
-          <li>Result Two</li>
-          <li>Result Three</li>
-          <li>Result Four</li>
-        </ul>
+        <input type="text" data-name="movie-one" class="search-field" placeholder="Enter a movie..." autocomplete="off" required data-provide="typeahead" />
       </div>
       
       <div class="plus-icon"></div>
       
       <div class="autocomplete">
-        <input type="text" name="movie-two" class="search-field" placeholder="Enter a Movie, TV Show, etc" />
-        <ul>
-          <li>Result One</li>
-          <li>Result Two</li>
-          <li>Result Three</li>
-          <li>Result Four</li>
-        </ul>
+        <input type="text" data-name="movie-two" class="search-field" placeholder="Enter a second movie..." autocomplete="off" required data-provide="typeahead" />
       </div>
       
-      <input type="button" class="submit-button" value="Go!" />
+      <input type="button" data-name="search-btn" class="submit-button" value="Find Actors" />
     
     </section>
     
-  </div>  
+  </div>-->
+  
+  <div class="results">
+  
+    <header>
+      <div class="search-logo">Intersact</div>
+      <div class="tag-line">Cross-reference actors in two movies.</div>
+    </header>
+    
+    <section class="section-container">
+    
+      <ul class="result-list" data-name="result-list">
+        
+        <li>Actor Name</li>
+        <li>Actor Name</li>
+        <li>Actor Name</li>
+        <li>Actor Name</li>
+        <li>Actor Name</li>
+        
+      </ul>
+      
+      <input type="button" class="submit-button again-button" data-name="back-btn" value="Try Again" />
+    
+    </section>
+  
+  </div>
   
 </body>
 
