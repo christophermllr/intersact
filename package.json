@@ -5,8 +5,10 @@
   "author": "KLM",
   "homepage": "",
   "dependencies": {
-    "jquery": "1.7.x",
-    "connect": "~2.7.3"
+    "orangejs": "*",
+    "underscore": "*",
+    "node-promise": "*",
+    "mysql": "*"
   },
   "devDependencies": {
     "grunt-css": "*",
