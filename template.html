@@ -90,6 +90,7 @@ header {
 }
 
 .autocomplete .result-list {
+  display: none;
   border: 1px solid #CCC;
   position: absolute;
   width: 100%;
@@ -99,7 +100,9 @@ header {
 }
 
 .search .plus-icon {
-  
+  height: 100px;
+  margin: 20px auto;
+  width: 100px;
 }
 
 .search .submit-button {
@@ -122,7 +125,7 @@ header {
     <section>
     
       <div class="autocomplete">
-        <input type="text" name="autocomplete" class="search-field" placeholder="Enter a Movie, TV Show, etc" />
+        <input type="text" name="movie-one" class="search-field" placeholder="Enter a Movie, TV Show, etc" />
         <ul class="result-list">
           <li>Result One</li>
           <li>Result Two</li>
@@ -134,7 +137,7 @@ header {
       <div class="plus-icon"></div>
       
       <div class="autocomplete">
-        <input type="text" name="autocomplete" />
+        <input type="text" name="movie-two" class="search-field" placeholder="Enter a Movie, TV Show, etc" />
         <ul>
           <li>Result One</li>
           <li>Result Two</li>
