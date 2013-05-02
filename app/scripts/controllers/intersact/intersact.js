@@ -18,6 +18,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
   var NavigationController            = include('core.controllers.navigation').NavigationController;
   var ModalController                 = include('core.controllers.modal').ModalController;
   var IntersActRepository             = include('klm.repositories.intersact').IntersActRepository;
+  var SearchViewController            = include('klm.views.search').SearchViewController;
+  var ResultsViewController           = include('klm.views.results').ResultsViewController;
   
   // Controller Definitions
   
@@ -41,6 +43,13 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       
       // create primary view
       this.view = new View('intersact');
+
+      // create child views
+      this.searchView = new View('search', 'search.html');
+      this.resultsView = new View('menu', 'login.html');
+
+      // initialize navigation controller
+      this.navigationController = new NavigationController(this.view);
 
       console.log('load controller');
       
@@ -66,6 +75,20 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     getRoutes: function() {
       
       function onHome(current) {
+
+        console.log('home loaded');
+
+        
+        // create the order list view controller
+        var searchViewController = new SearchViewController(this, this.searchView);
+
+        // add the order list view controller
+        this.add('search', searchViewController);
+                  
+        // push the order list view
+        this.navigationController.pushView(searchViewController.view);
+                  
+        
                           
       }
       
@@ -113,5 +136,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
   'core.controllers.common',
   'core.controllers.navigation',
   'core.controllers.modal',
-  'klm.repositories.intersact'
+  'klm.repositories.intersact',
+  'klm.views.search',
+  'klm.views.results'
 ]);
