@@ -40,8 +40,6 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       this.intersactRepository = intersactRepository;
        
       // store state
-      this.selectedCustomer = null;
-      this.selectedDepartment = null;
       
       // create primary view
       this.view = new View('intersact');
