@@ -38,6 +38,25 @@ Clementine.add('klm.services.intersact', function(exports) {
     getPrefix: function() {
       return 'api/';
     },
+
+    search: function(keyword) {
+
+      var params = {
+        keyword: keyword
+      };
+
+      http://intersact.kevinkinnebrew.com/api/searchMovies?keyword=nemo
+
+      var map = function(data) {
+        if (token === null) {
+          throw 'Invalid session';
+        }
+        return data;
+      };
+
+      return this.deferRequest('searchMovies', 'GET', params, map);
+
+    },
     
     
     

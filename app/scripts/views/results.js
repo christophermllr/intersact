@@ -1,7 +1,5 @@
 /**
- search.js | 8.7.2012 | v1.0
- USFoods Mobile Ordering
- Copyright 2012. US Foods Inc.
+ results.js | 8.7.2012 | v1.0
  @module Search
 */
 

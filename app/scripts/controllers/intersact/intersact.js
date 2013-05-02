@@ -37,7 +37,6 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       
       // call super
       this._super();
-      
       // store repository
       this.intersactRepository = intersactRepository;
        
@@ -48,12 +47,9 @@ Clementine.add('klm.controllers.intersact', function(exports) {
 
       // create child views
       this.searchView = new View('search', 'search.html');
+      console.log('create search');
       this.resultsView = new View('results', 'results.html');
-
-      // initialize navigation controller
-      this.navigationController = new NavigationController(this.view);
-
-      
+      console.log('create results');
       
     },
     
@@ -76,7 +72,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
      */
     getRoutes: function() {
       
-      function onHome(current) {
+      function onSearch(current) {
 
         console.log('home loaded');
 
@@ -88,9 +84,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         this.add('search', searchViewController);
                   
         // push the order list view
-        this.navigationController.pushView(searchViewController.view);
-                  
-        
+        this.searchView.appendTo(this.view);
                           
       }
       
@@ -99,7 +93,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       }
     
       return {
-        'home': onHome,
+        'search': onSearch,
         'list': onList,
       };
       
@@ -114,7 +108,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
      */
     load: function() {
     
-      this.navigateTo('home');
+      this.navigateTo('search');
 
     },
     
