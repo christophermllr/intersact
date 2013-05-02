@@ -23,7 +23,30 @@ Clementine.add('klm.repositories.intersact', function(exports) {
     initialize: function() {
       
       
-    }
+    },
+
+    getActors: function(keyword) {
+      
+      var that = this;
+      
+      // create deferred
+      var deferred = jQuery.Deferred();
+            
+      App.getService('intersact').searchMovies(keyword).then(function(movies) {
+        
+        // return customer list
+        deferred.resolve(movies);
+      
+      }, function() {
+        
+        //fail
+        deferred.reject();
+                
+      });
+
+      return deferred;
+      
+    },
   });
   
   // Exports

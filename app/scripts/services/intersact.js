@@ -39,7 +39,7 @@ Clementine.add('klm.services.intersact', function(exports) {
       return 'api/';
     },
 
-    search: function(keyword) {
+    searchMovies: function(keyword) {
 
       var params = {
         keyword: keyword
