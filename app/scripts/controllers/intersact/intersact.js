@@ -126,6 +126,24 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     //Event handlers
     onSearch: function(e) {
 
+      var movies = e.data;
+
+      // fetch customers
+      this.intersactRepository.getActors('18979', '117874'/*movies.movie1, movies.movie2*/).then(function(actors) {
+        console.log(actors);    
+      }, function() {
+
+        // show error
+        console.log('error');
+        
+      });
+
+
+
+    },
+
+    onTypeAhead: function(e) {
+
       var keyword = e.data;
 
       // fetch customers
@@ -137,9 +155,6 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         console.log('error');
         
       });
-
-
-
     }
     
   });  

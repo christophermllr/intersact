@@ -45,14 +45,24 @@ Clementine.add('klm.views.search', function(exports) {
      */
     getBindings: function() {
       return {        
-        'search-btn': { 'touchclick': this.$onSearch }
+        'search-btn': { 'touchclick': this.$onSearch },
       };
     },
       
       
     $onSearch: function(e) {
       e.stopPropagation();
-      this.fire('search', {});
+
+      // get movie IDs
+      var movie1 = this.getElement('movie1').attr('data-id');
+      var movie2 = this.getElement('movie1').attr('data-id');
+
+      var movies = {
+        movie1Id: movie1,
+        movie2Id: movie2
+      }
+
+      this.fire('search', movies);
     }
     
   });
