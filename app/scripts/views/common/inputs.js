@@ -1,0 +1,201 @@
+/**
+ lists.js | 8.7.2012 | v1.0
+ USFoods Mobile Ordering
+ Copyright 2012. US Foods Inc.
+ @module Common
+*/
+
+Clementine.add('usf.views.common.inputs', function(exports) {
+
+  // Declarations
+  
+  var InputFieldViewController;
+  var LiveInputFieldViewController;
+  
+  
+  // Dependencies
+  
+  var ViewController = Clementine.ViewController;
+  
+  
+  // Controller Definitions
+  
+  InputFieldViewController = ViewController.extend({
+    
+    /**
+     @class InputFieldViewController
+     @extends ViewController
+     @constructor
+    */
+    initialize: function(parent, view) {
+      
+      // call super
+      this._super.apply(this, arguments);
+      
+    },
+    
+    
+    // Configuration
+    
+    /**
+     @method getType
+     @return {String} The unique name of the view.
+     */
+    getType: function() {
+      return 'input-field';
+    },
+    
+    /**
+     @method getBindings
+     @return {Object} The map of event bindings keyed by name.
+     */
+    getBindings: function() {
+      return {
+        'input-box': { 'input': this.$onKeyPress },
+        'clear-btn': { 'touchclick': this.$onClear }
+      };
+    },
+    
+    
+    // Public Methods
+    
+    /**
+     Updates the current value of the input field
+     @method setValue
+     @param {String} value A string to set the value of the input field.
+     */
+    setValue: function(value) {
+      this.getElement('input-box').val(value);
+    },
+    
+    /**
+     Returns the current value of the input field
+     @method getValue
+     @return {String} The current value of the input field.
+     */
+    getValue: function() {
+      return this.getElement('input-box').val();
+    },
+    
+    /**
+     Clears out the value of the input field.
+     @method clearValue
+     */
+    clearValue: function() {
+      this.getElement('clear-btn').removeClass('clear');
+      this.getElement('input-box').val('').blur();
+    },
+
+    /**
+     Imitates a user pressing enter while focused on the input field.
+     @method triggerEnter
+     */
+    triggerEnter: function() {
+      var searchKeyword = this.getElement('input-box').val();
+      this.fire('enter', searchKeyword);
+    },
+
+
+    // DOM Listeners
+    
+    /**
+     Called when a key is pressed while focused in the input field.
+     @method $onKeyPress
+     @param {Event} e The event object.
+     */
+    $onKeyPress: function(e) {
+      var el = this.getElement('input-box');
+      var code = (e.keyCode ? e.keyCode : e.which);
+      if (el.val().length > 0) {
+        this.getElement('clear-btn').addClass('clear');
+      } else {
+        this.getElement('clear-btn').removeClass('clear');
+      }
+      if (code === 13) { // enter keycode
+        e.preventDefault();
+        el.blur();
+        this.fire('enter', el.val());
+      }
+    },
+    
+    /**
+     Called when the user clicks the clear button on the input field.
+     @method $onClear
+     @param {Event} e The event object.
+     */
+    $onClear: function(e) {
+      e.stopPropagation();
+      this.clearValue();
+      this.fire('clear');
+    }
+    
+  });
+
+  
+  LiveInputFieldViewController = InputFieldViewController.extend({
+    
+    /**
+     @class LiveInputFieldViewController
+     @extends InputFieldController
+     @constructor
+    */
+    initialize: function(parent, view) {
+            
+      // call super
+      this._super.apply(this, arguments);
+      
+    },
+    
+
+    // Configuration
+
+    /**
+     @method getType
+     @return {String} The unique name of the view.
+     */
+    getType: function() {
+      return 'live-input-field';
+    },
+
+
+    // DOM Listeners
+
+    /**
+     Called after the third key is pressed while focused in the input field.
+     @method $onKeyPress
+     @param {Event} e The event object.
+     */
+    $onKeyPress: function(e) {
+      var that = this;
+      if (this.hasOwnProperty("keyPressTimeout")) {
+        clearTimeout(this.keyPressTimeout);
+      }
+      var el = this.getElement('input-box');
+      var code = (e.keyCode ? e.keyCode : e.which);
+      if (el.val().length > 0) {
+        this.getElement('clear-btn').addClass('clear');
+      } else {
+        this.getElement('clear-btn').removeClass('clear');
+      }
+      if ((el.val().length > 2 && code !== 13) || el.val().length === 0) {
+        this.keyPressTimeout = setTimeout(function() {
+          that.fire('enter', el.val());
+        }, 500);
+      }
+
+      if (code === 13) { // enter keycode
+        e.preventDefault();
+        this.fire('enter', el.val());
+        el.blur();
+      }
+    }
+
+  });
+  
+  
+  // Exports
+  
+  exports.InputFieldViewController = InputFieldViewController;
+  exports.LiveInputFieldViewController = LiveInputFieldViewController;
+
+}, []);
