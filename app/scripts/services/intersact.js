@@ -45,8 +45,6 @@ Clementine.add('klm.services.intersact', function(exports) {
         keyword: keyword
       };
 
-      http://intersact.kevinkinnebrew.com/api/searchMovies?keyword=nemo
-
       var map = function(data) {
         if (token === null) {
           throw 'Invalid session';
