@@ -1,9 +1,24 @@
-<div data-control="search">
-  <span>
-    Search
-    <input type="text" data-name="movie1" />
-    <input type="text" data-name="movie2" />
-    <input type="button" data-name="search-btn" />
-
-  </span>
+<div data-control="search" class="search">
+  
+  <header>
+    <div class="search-logo">Intersact</div>
+    <div class="tag-line">Cross-reference actors in two movies.</div>
+  </header>
+  
+  <section class="section-container">
+  
+    <div class="autocomplete">
+      <input type="text" data-name="movie1" class="search-field" placeholder="Enter a movie..." autocomplete="off" required data-provide="typeahead" />
+    </div>
+    
+    <div class="plus-icon"></div>
+    
+    <div class="autocomplete">
+      <input type="text" data-name="movie2" class="search-field" placeholder="Enter a second movie..." autocomplete="off" required data-provide="typeahead" />
+    </div>
+    
+    <input type="button" data-name="search-btn" class="submit-button" value="Find Actors" />
+  
+  </section>
+  
 </div>
