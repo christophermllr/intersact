@@ -129,7 +129,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       var movies = e.data;
 
       // fetch customers
-      this.intersactRepository.getActors('18979', '117874'/*movies.movie1, movies.movie2*/).then(function(actors) {
+      this.intersactRepository.getActors(movies.movie1, movies.movie2).then(function(actors) {
         console.log(actors);    
       }, function() {
 
