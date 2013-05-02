@@ -32,6 +32,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
      @param {IntersActRepository} intersactRepository
      */
     initialize: function(intersactRepository) {
+
+      console.log('load controller');
       
       // call super
       this._super();
@@ -46,12 +48,12 @@ Clementine.add('klm.controllers.intersact', function(exports) {
 
       // create child views
       this.searchView = new View('search', 'search.html');
-      this.resultsView = new View('menu', 'login.html');
+      this.resultsView = new View('results', 'results.html');
 
       // initialize navigation controller
       this.navigationController = new NavigationController(this.view);
 
-      console.log('load controller');
+      
       
     },
     

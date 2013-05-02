@@ -38,7 +38,7 @@ Clementine.add('klm.views.results', function(exports) {
      @return {String} The unique name of the view.
      */
     getType: function() {
-      return 'search';
+      return 'results';
     },
     
     /**
