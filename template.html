@@ -26,9 +26,33 @@
 <!-- viewport rules -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <link type="text/css" rel="stylesheet" href="bootstrap.css" />
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        var data = [{"id":81633,"name":"Declaration of Independence, The","year":1938},
+                     {"id":158993,"name":"Independence","year":1976},
+                     {"id":158996,"name":"Independence Day","year":1975},
+                     {"id":158997,"name":"Independence Day","year":1983},
+                     {"id":158998,"name":"Independence Day","year":1994},
+                     {"id":158999,"name":"Independence Day","year":1996}];
+        
+        $(".search-field").typeahead({
+            source: _.map(data, function(item) {
+                return item.name + " (" + item.year + ")";
+             }),
+            minLength: 3,
+            updater: function(selection){
+                console.log(_.find(data, function(item) {
+                    return selection == (item.name + " (" + item.year + ")");
+                }).id);
+            }
+        });
+    });
+</script>
 
 <style type="text/css">
 
