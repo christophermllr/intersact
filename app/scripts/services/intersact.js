@@ -39,7 +39,7 @@ Clementine.add('klm.services.intersact', function(exports) {
       return 'api/';
     },
 
-    search: function(keyword) {
+    searchMovies: function(keyword) {
 
       var params = {
         keyword: keyword
@@ -55,6 +55,23 @@ Clementine.add('klm.services.intersact', function(exports) {
       return this.deferRequest('searchMovies', 'GET', params, map);
 
     },
+
+    getActors: function(movie1, movie2) {
+
+      var params = {
+        movie1: movie1,
+        movie2: movie2
+      };
+
+      var map = function(data) {
+        if (token === null) {
+          throw 'Invalid session';
+        }
+        return data;
+      };
+
+      return this.deferRequest('computeIntersect', 'GET', params, map);
+    }
     
     
     

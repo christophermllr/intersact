@@ -62,7 +62,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
      */
     getBindings: function() {
       return {
-        'back': { 'back': this.onBack }
+        'search': { 'search': this.onSearch },
+        'results': { 'back': this.onBack }
       };
     },
     
@@ -120,6 +121,25 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       
       this._super();
     
+    },
+
+    //Event handlers
+    onSearch: function(e) {
+
+      var keyword = e.data;
+
+      // fetch customers
+      this.intersactRepository.getMovies(keyword).then(function(movies) {
+        console.log(movies);      
+      }, function() {
+
+        // show error
+        console.log('error');
+        
+      });
+
+
+
     }
     
   });  

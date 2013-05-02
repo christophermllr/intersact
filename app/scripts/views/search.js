@@ -45,7 +45,7 @@ Clementine.add('klm.views.search', function(exports) {
      */
     getBindings: function() {
       return {        
-        'search': { 'touchclick': this.$onSearch }
+        'search-btn': { 'touchclick': this.$onSearch }
       };
     },
       
