@@ -100,6 +100,10 @@ Clementine.add('klm.controllers.intersact', function(exports) {
                   
         // push the order list view
         this.resultsView.appendTo(this.view);
+
+        var resultsList = this.getElement('results-list');
+
+        
                       
       }
     
