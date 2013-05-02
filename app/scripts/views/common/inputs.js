@@ -72,7 +72,7 @@ Clementine.add('usf.views.common.inputs', function(exports) {
      @return {String} The current value of the input field.
      */
     getValue: function() {
-      return this.getElement('input-box').val();
+      return this.getElement('input-box').attr('itemid');
     },
     
     /**
@@ -147,7 +147,8 @@ Clementine.add('usf.views.common.inputs', function(exports) {
     getBindings: function() {
       return {
         'input-box': { 'input': this.$onKeyPress, 'blur': this.$onBlur },
-        'clear-btn': { 'touchclick': this.$onClear }
+        'clear-btn': { 'touchclick': this.$onClear },
+        'result-list(li)': { 'click': this.$onChoose }
       };
     },
     
@@ -201,7 +202,22 @@ Clementine.add('usf.views.common.inputs', function(exports) {
     
     },
     
+    $onChoose: function(e) {
+      
+      var itemid = $(e.currentTarget).attr('itemid');
+      
+      this.getElement('input-box').val($(e.currentTarget).text());
+      this.getElement('input-box').attr('itemid', itemid);
+      
+      this.getElement('result-list').hide();
+      
+    },
+    
     setResults: function(itemlist) {
+    
+      if (!itemlist || itemlist.length === 0) {
+        return this.getElement('result-list').empty().hide();
+      }
     
       var list = this.getElement('result-list');
       

@@ -53,10 +53,14 @@ Clementine.add('klm.views.search', function(exports) {
       
     $onSearch: function(e) {
       e.stopPropagation();
-
+      
       // get movie IDs
-      var movie1 = this.getElement('movie1').attr('data-id');
-      var movie2 = this.getElement('movie1').attr('data-id');
+      var movie1 = this.getView('movie1').getValue();
+      var movie2 = this.getView('movie2').getValue();
+
+      if (!movie1 && !movie2) {
+        return;
+      }
 
       var movies = {
         movie1Id: movie1,

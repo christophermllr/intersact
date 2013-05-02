@@ -49,7 +49,7 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       // create child views
       this.searchView = new View('search', 'search.html');
       console.log('create search');
-      this.resultsView = new View('results', 'results.html');
+      this.resultsView = null;
       console.log('create results');
       
     },
@@ -76,6 +76,23 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       
       function onSearch(current) {
         
+        if (this.searchView) {
+          $(this.searchView.target).show();
+          $(this.searchView.target).find('input[type="text"]').val('').removeAttr('itemid');
+        }
+        
+        if (this.resultsView) {
+          $(this.resultsView.target).hide();
+        }
+        
+        if (current === 'results') {
+        
+          this.remove('results');
+          
+          return;
+        
+        }
+        
         // create the order list view controller
         var searchViewController = new SearchViewController(this, this.searchView);
 
@@ -88,18 +105,23 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       }
       
       function onResults(current) {
-
+        
+        this.resultsView = new View('results', 'results.html');
+        
         // create the order list view controller
         var resultsViewController = new ResultsViewController(this, this.resultsView);
-
+                
+        $(this.searchView.target).hide();
+        
+        $(this.resultsView.target).show();
+        
+        resultsViewController.setResults(this.actors);
+        
         // add the order list view controller
         this.add('results', resultsViewController);
                   
         // push the order list view
         this.resultsView.appendTo(this.view);
-
-        var resultsList = this.getElement('results-list');
-
         
                       
       }
@@ -135,25 +157,20 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     },
 
     //Event handlers
-    
-    onEnter: function(e) {
-    
-      e.stopPropagation();
-      
-      console.log('ke', e.data);
-    
-    },
-    
-    onSearch: function(e) {
 
+    onSearch: function(e) {
+      
+      console.log('asdsa', e.data);
+      
       var movies = e.data;
+      var that = this;
 
       // fetch customers
-      this.intersactRepository.getActors(movies.movie1, movies.movie2).then(function(actors) {  
+      this.intersactRepository.getActors(movies.movie1Id, movies.movie2Id).then(function(actors) {  
 
-        this.actors =  actors;
+        that.actors =  actors;
 
-        this.navigateTo('results');
+        that.navigateTo('results');
 
       }, function() {
 
@@ -205,7 +222,11 @@ Clementine.add('klm.controllers.intersact', function(exports) {
     },
 
     onBack: function(e) {
-      this.resultsView.remove();
+      
+      console.log('back');
+      
+      this.navigateTo('search');
+      
     }
     
   });  

@@ -67,7 +67,7 @@ Clementine.add('klm.services.intersact', function(exports) {
         if (data === null) {
           throw 'Invalid session';
         }
-        return data;
+        return data.data;
       };
 
       return this.deferRequest('computeIntersect', 'GET', params, map);

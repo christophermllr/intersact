@@ -6,6 +6,10 @@ html, body {
   width: 100%;
 }
 
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 header {
   background: #3B84BF;
   padding: 50px 0;
@@ -28,6 +32,7 @@ header {
 
 .autocomplete {
   margin: 0 auto;
+  position: relative;
   width: 600px;
 }
 
@@ -129,6 +134,25 @@ header {
 
 .result-list li:first-child {
   border-top: 1px solid #DDD;
+}
+
+.auto-input {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  background: #FFF;
+  border-bottom: none;
+}
+
+.result-list.auto-input li:first-child {
+  border-top: none;
+}
+
+
+.result-list.auto-input li:hover, .result-list.auto-input li:active {
+  color: #FFF;
+  background: #3783C1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 640px) {

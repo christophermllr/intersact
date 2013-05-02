@@ -45,14 +45,36 @@ Clementine.add('klm.views.results', function(exports) {
      */
     getBindings: function() {
       return {        
-        'back-btn': { 'touchclick': this.$onBack }
+        'back-btn': { 'click': this.$onBack }
       };
     },
+    
+    setResults: function(itemlist) {
+        
+      if (!itemlist || itemlist.length === 0) {
+          return this.getElement('result-list').empty().hide();
+        }
       
+        var list = this.getElement('result-list');
+        
+        list.empty();
       
-    $onSearch: function(e) {
+        list.show();
+      
+        for (var i=0; i<itemlist.length; i++) {
+          
+          list.append('<li>' + itemlist[i].firstName + ' ' + itemlist[i].lastName + '</li>');
+          
+        }
+    
+    },
+    
+    $onBack: function(e) {
+      
       e.stopPropagation();
+      
       this.fire('back');
+            
     }
     
   });
