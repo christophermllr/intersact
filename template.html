@@ -26,8 +26,9 @@
 <!-- viewport rules -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<link type="text/css" rel="stylesheet" href="bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css" />
 
 
 <style type="text/css">
@@ -36,13 +37,14 @@ html, body {
   font-family: "Helvetica Neue", Helvetica;
   height: 100%;
   margin: 0;
+  line-height: 1.2;
   padding: 0;
   width: 100%;
 }
 
 header {
   background: #3B84BF;
-  padding: 80px 0;
+  padding: 50px 0;
   width: 100%;
 }
 
@@ -73,6 +75,7 @@ header {
   font-size: 18px;
   border: 1px solid #CCC;
   padding: 10px;
+  height: 44px;
   position: relative;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -100,13 +103,34 @@ header {
 }
 
 .search .plus-icon {
+  background: url(icon@2x.png) center center no-repeat;
   height: 100px;
   margin: 20px auto;
   width: 100px;
+  -webkit-background-size: 100px 100px;
+  -moz-background-size: 100px 100px;
 }
 
 .search .submit-button {
-  
+  background: ##3B84BF;
+  height: 44px;
+  width: 600px;
+}
+
+::-webkit-input-placeholder {
+   line-height: 1.2;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   line-height: 1.2;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   line-height: 1.2;
+}
+
+:-ms-input-placeholder {  
+   line-height: 1.2;
 }
 
 </style>
@@ -125,7 +149,7 @@ header {
     <section>
     
       <div class="autocomplete">
-        <input type="text" name="movie-one" class="search-field" placeholder="Enter a Movie, TV Show, etc" />
+        <input type="text" name="movie-one" class="search-field" placeholder="Enter a Movie, TV Show, etc" required />
         <ul class="result-list">
           <li>Result One</li>
           <li>Result Two</li>
