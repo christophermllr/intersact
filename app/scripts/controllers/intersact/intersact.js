@@ -43,6 +43,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
       
       // create primary view
       this.view = new View('intersact');
+
+      console.log('load controller');
       
     },
     

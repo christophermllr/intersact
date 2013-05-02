@@ -47,6 +47,8 @@ Clementine.add('intersact.app', function(exports) {
       
       // store globally
       window.App = this;
+
+      console.log('init app.js');
       
     },
     
