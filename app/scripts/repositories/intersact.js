@@ -36,7 +36,6 @@ Clementine.add('klm.repositories.intersact', function(exports) {
         var movieList = _.map(movies, function(demMovies) {
           return new Movie(demMovies);
         });
-
         
         // return customer list
         deferred.resolve(movieList);
@@ -64,7 +63,7 @@ Clementine.add('klm.repositories.intersact', function(exports) {
         });
 
         // return customer list
-        deferred.resolve(actors);
+        deferred.resolve(actorList);
       
       }, function() {
         

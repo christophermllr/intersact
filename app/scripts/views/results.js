@@ -59,9 +59,9 @@ Clementine.add('klm.views.results', function(exports) {
         
         list.empty();
         list.show();
-      
+        console.log(itemlist);
         for (var i=0; i<itemlist.length; i++) {          
-          list.append('<li>' + itemlist[i].firstName + ' ' + itemlist[i].lastName + '</li>');
+          list.append('<li><img class="image" src="' + itemlist[i].imageLink + '"></img>' + itemlist[i].firstName + ' ' + itemlist[i].lastName + '</li>');
         }
     
     },
