@@ -9,6 +9,7 @@ Clementine.add('usf.views.common.inputs', function(exports) {
   
   var InputFieldViewController;
   var LiveInputFieldViewController;
+  var AutocompleteViewController;
   
   
   // Dependencies
@@ -147,8 +148,7 @@ Clementine.add('usf.views.common.inputs', function(exports) {
     getBindings: function() {
       return {
         'input-box': { 'input': this.$onKeyPress, 'blur': this.$onBlur },
-        'clear-btn': { 'touchclick': this.$onClear },
-        'result-list(li)': { 'click': this.$onChoose }
+        'clear-btn': { 'touchclick': this.$onClear }
       };
     },
     
@@ -236,9 +236,77 @@ Clementine.add('usf.views.common.inputs', function(exports) {
   });
   
   
+  AutocompleteViewController = LiveInputFieldViewController.extend({
+    
+    /**
+     @class AutocompleteViewController
+     @extends LiveInputFieldViewController
+     @constructor
+    */
+    initialize: function(parent, view) {
+            
+      // call super
+      this._super.apply(this, arguments);
+      
+    },
+    
+    getBindings: function() {
+      return {
+        'input-box': { 'input': this.$onKeyPress, 'blur': this.$onBlur },
+        'clear-btn': { 'touchclick': this.$onClear },
+        'result-list(li)': { 'click': this.$onChoose }
+      };
+    },
+    
+
+    // Configuration
+
+    /**
+     @method getType
+     @return {String} The unique name of the view.
+     */
+    getType: function() {
+      return 'autocomplete';
+    },
+
+
+    // DOM Listeners
+    
+    $onChoose: function(e) {
+      
+      var itemid = $(e.currentTarget).attr('itemid');
+      
+      this.getElement('input-box').val($(e.currentTarget).text());
+      this.getElement('input-box').attr('itemid', itemid);
+      
+      this.getElement('result-list').hide();
+      
+    },
+    
+    setResults: function(itemlist) {
+    
+      if (!itemlist || itemlist.length === 0) {
+        return this.getElement('result-list').empty().hide();
+      }
+    
+      var list = this.getElement('result-list');
+      
+      list.empty();
+      list.show();
+    
+      for (var i=0; i<itemlist.length; i++) {
+        list.append('<li itemid="' + itemlist[i].id + '">' + itemlist[i].name + ' (' + itemlist[i].year + ')</li>');        
+      }
+    
+    }
+    
+  });
+  
+  
   // Exports
   
   exports.InputFieldViewController = InputFieldViewController;
   exports.LiveInputFieldViewController = LiveInputFieldViewController;
+  exports.AutocompleteViewController = AutocompleteViewController;
 
 }, []);

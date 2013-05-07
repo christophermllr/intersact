@@ -1,8 +1,6 @@
 /**
  app.js | 8.7.2012 | v1.0
- USFoods Mobile Ordering
- Copyright 2012. US Foods Inc.
- @module Sales
+ Copyright 2012. Davis/Kinnebrew/Lewis/Miller.
 */
 
 Clementine.add('intersact.app', function(exports) {
@@ -15,13 +13,8 @@ Clementine.add('intersact.app', function(exports) {
   
   var View = Clementine.View;
   
-  // Declare services
-  var IntersActService = include('klm.services.intersact').IntersActService;
-
-  // Declare Controllers
+  var IntersActService    = include('klm.services.intersact').IntersActService;
   var IntersActController = include('klm.controllers.intersact').IntersActController;
-
-  // Decare Repository
   var IntersActRepository = include('klm.repositories.intersact').IntersActRepository;
   
   
@@ -47,18 +40,19 @@ Clementine.add('intersact.app', function(exports) {
       
       // store globally
       window.App = this;
-
-      console.log('init app.js');
       
     },
     
     render: function() {
-      console.log('render');
+
       var intersactRepository = new IntersActRepository(localStorage);
+      
       this.root = new IntersActController(intersactRepository);
       this.root.view.appendTo(document.body);
       this.root.load();
+      
       $(document.body).removeClass('hidden');
+    
     },
     
     getService: function(name) {

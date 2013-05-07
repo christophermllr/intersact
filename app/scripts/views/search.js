@@ -52,6 +52,7 @@ Clementine.add('klm.views.search', function(exports) {
     },
       
     $onSearch: function(e) {
+    
       e.stopPropagation();
       
       // get movie IDs

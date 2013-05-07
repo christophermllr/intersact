@@ -1,6 +1,5 @@
 /**
- intersacts.js | 8.7.2012 | v1.0
- @module Common
+ intersact.js | 5.6.2012 | v1.0
 */
 
 Clementine.add('klm.repositories.intersact', function(exports) {
@@ -8,9 +7,7 @@ Clementine.add('klm.repositories.intersact', function(exports) {
   // Declarations
 
   var IntersActRepository;
-  
-  // Dependencies
-  
+    
   
   // Repository Definitions
   
@@ -21,16 +18,12 @@ Clementine.add('klm.repositories.intersact', function(exports) {
      @constructor
      */
     initialize: function() {
-      
-      
+    
     },
 
     getMovies: function(keyword) {
       
-      var that = this;
-      
-      // create deferred
-      var deferred = jQuery.Deferred();
+      var deferred = jQuery.Deferred(), that = this;
             
       App.getService('intersact').searchMovies(keyword).then(function(movies) {
         
@@ -47,12 +40,10 @@ Clementine.add('klm.repositories.intersact', function(exports) {
       return deferred;
       
     },
+    
     getActors: function(movie1, movie2) {
       
-      var that = this;
-      
-      // create deferred
-      var deferred = jQuery.Deferred();
+      var deferred = jQuery.Deferred(), that = this;
             
       App.getService('intersact').getActors(movie1, movie2).then(function(actors) {
         
@@ -69,7 +60,9 @@ Clementine.add('klm.repositories.intersact', function(exports) {
       return deferred;
       
     }
+    
   });
+  
   
   // Exports
   

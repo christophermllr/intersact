@@ -1,6 +1,5 @@
 /**
- intersact.js | 8.7.2012 | v1.0
- @module Sales
+ intersact.js | 5.6.2012 | v1.0
 */
 
 Clementine.add('klm.controllers.intersact', function(exports) {
@@ -15,11 +14,10 @@ Clementine.add('klm.controllers.intersact', function(exports) {
   var View = Clementine.View;
   
   var Controller                      = include('core.controllers.common').Controller;
-  var NavigationController            = include('core.controllers.navigation').NavigationController;
-  var ModalController                 = include('core.controllers.modal').ModalController;
   var IntersActRepository             = include('klm.repositories.intersact').IntersActRepository;
   var SearchViewController            = include('klm.views.search').SearchViewController;
   var ResultsViewController           = include('klm.views.results').ResultsViewController;
+  
   
   // Controller Definitions
   
@@ -32,11 +30,10 @@ Clementine.add('klm.controllers.intersact', function(exports) {
      @param {IntersActRepository} intersactRepository
      */
     initialize: function(intersactRepository) {
-
-      console.log('load controller');
       
       // call super
       this._super();
+      
       // store repository
       this.intersactRepository = intersactRepository;
        
@@ -48,9 +45,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
 
       // create child views
       this.searchView = new View('search', 'search.html');
-      console.log('create search');
+
       this.resultsView = null;
-      console.log('create results');
       
     },
     
@@ -88,6 +84,8 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         if (current === 'results') {
         
           this.remove('results');
+          
+          this.resultsView = null;
           
           return;
         
@@ -146,24 +144,12 @@ Clementine.add('klm.controllers.intersact', function(exports) {
 
     },
     
-    /**
-     Unloads the controller and removes all listeners.
-     @method unload
-     */
-    unload: function() {
-      
-      this._super();
-    
-    },
 
-    //Event handlers
+    // Event handlers
 
     onSearch: function(e) {
-      
-      console.log('asdsa', e.data);
-      
-      var movies = e.data;
-      var that = this;
+            
+      var movies = e.data, that = this;
 
       // fetch customers
       this.intersactRepository.getActors(movies.movie1Id, movies.movie2Id).then(function(actors) {  
@@ -223,22 +209,21 @@ Clementine.add('klm.controllers.intersact', function(exports) {
 
     onBack: function(e) {
       
-      console.log('back');
+      e.stopPropagation();
       
       this.navigateTo('search');
       
     }
     
-  });  
+  });
+  
   
   // Exports
   
-  exports.IntersActController        = IntersActController;
+  exports.IntersActController = IntersActController;
     
 }, [
   'core.controllers.common',
-  'core.controllers.navigation',
-  'core.controllers.modal',
   'klm.repositories.intersact',
   'klm.views.search',
   'klm.views.results'

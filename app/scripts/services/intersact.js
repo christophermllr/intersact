@@ -1,6 +1,5 @@
 /**
- intersact.js | 8.7.2012 | v1.0
- @module Common
+ intersact.js | 5.6.2012 | v1.0
 */
 
 Clementine.add('klm.services.intersact', function(exports) {
@@ -72,8 +71,6 @@ Clementine.add('klm.services.intersact', function(exports) {
 
       return this.deferRequest('computeIntersect', 'GET', params, map);
     }
-    
-    
     
   });
   
