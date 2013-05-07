@@ -7,6 +7,11 @@ Clementine.add('klm.repositories.intersact', function(exports) {
   // Declarations
 
   var IntersActRepository;
+
+    // Dependencies
+  
+  var Movie = include('klm.models').Movie;
+  var Actor = include('klm.models').Actor;
     
   
   // Repository Definitions
@@ -26,9 +31,15 @@ Clementine.add('klm.repositories.intersact', function(exports) {
       var deferred = jQuery.Deferred(), that = this;
             
       App.getService('intersact').searchMovies(keyword).then(function(movies) {
+
+        // create movie list object
+        var movieList = _.map(movies, function(demMovies) {
+          return new Movie(demMovies);
+        });
+
         
         // return customer list
-        deferred.resolve(movies);
+        deferred.resolve(movieList);
       
       }, function() {
         
@@ -47,6 +58,11 @@ Clementine.add('klm.repositories.intersact', function(exports) {
             
       App.getService('intersact').getActors(movie1, movie2).then(function(actors) {
         
+         // create actor list object
+        var actorList = _.map(actors, function(demActors) {
+          return new Actor(actorList);
+        });
+
         // return customer list
         deferred.resolve(actors);
       
@@ -68,4 +84,4 @@ Clementine.add('klm.repositories.intersact', function(exports) {
   
   exports.IntersActRepository = IntersActRepository;
 
-}, ['']);
+}, ['klm.models']);
