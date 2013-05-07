@@ -58,13 +58,10 @@ Clementine.add('klm.views.results', function(exports) {
         var list = this.getElement('result-list');
         
         list.empty();
-      
         list.show();
       
-        for (var i=0; i<itemlist.length; i++) {
-          
+        for (var i=0; i<itemlist.length; i++) {          
           list.append('<li>' + itemlist[i].firstName + ' ' + itemlist[i].lastName + '</li>');
-          
         }
     
     },

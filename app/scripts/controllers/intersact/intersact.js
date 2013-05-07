@@ -113,7 +113,11 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         
         $(this.resultsView.target).show();
         
-        resultsViewController.setResults(this.actors);
+        if (this.actors && this.actors.length > 0) {
+          resultsViewController.setResults(this.actors);
+        } else {
+          resultsViewController.setResults([{ firstName: 'No Results', lastName: '' }]);
+        }
         
         // add the order list view controller
         this.add('results', resultsViewController);
@@ -121,7 +125,6 @@ Clementine.add('klm.controllers.intersact', function(exports) {
         // push the order list view
         this.resultsView.appendTo(this.view);
         
-                      
       }
     
       return {
