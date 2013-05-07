@@ -1,19 +1,13 @@
-Clementine.add('usf.models', function(exports) {
+Clementine.add('klm.models', function(exports) {
   
   /**
    @class Movie
    @constructor
    */
   function Movie(data) {
-    this.token = data.token;
-    this.username = data.username;
-    this.password = data.password;
-    this.role = data.role;
-    this.hasCustomers = data.hasCustomers;
-    this.hasMultipleDepartments = data.hasMultipleDepartments;
-    this.defaultCustomer = data.defaultCustomer;
-    this.defaultDepartment = data.defaultDepartment;
-    this.division = data.division;
+    this.id = data.year;
+    this.name = data.name;
+    this.year = data.year;
   }
   
   
@@ -23,14 +17,11 @@ Clementine.add('usf.models', function(exports) {
    @constructor
    */
   function Actor(data) {
-    this.id = data.customerNumber;
-    this.customerName = ModelHelpers.cleanSpecialChars(data.customerName, true);
-    this.customerNumber = data.customerNumber;
-    this.deliveryStatus = data.hasDeliveries.toLowerCase() === 'y' ? 'delivery' : '';
+    this.id = data.actorId;
+    this.firstName = data.firstName;
+    this.lastName = data.lastName;
+    this.gender = data.gender;
   }
-  
-  
-  
   
   // Exports
   
