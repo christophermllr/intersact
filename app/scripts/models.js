@@ -5,12 +5,10 @@ Clementine.add('klm.models', function(exports) {
    @constructor
    */
   function Movie(data) {
-    this.id = data.year;
+    this.id = data.id;
     this.name = data.name;
     this.year = data.year;
   }
-  
-  
   
   /**
    @class Actor

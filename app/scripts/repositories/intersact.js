@@ -60,7 +60,7 @@ Clementine.add('klm.repositories.intersact', function(exports) {
         
          // create actor list object
         var actorList = _.map(actors, function(demActors) {
-          return new Actor(actorList);
+          return new Actor(demActors);
         });
 
         // return customer list
