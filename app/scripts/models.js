@@ -8,6 +8,7 @@ Clementine.add('klm.models', function(exports) {
     this.id = data.id;
     this.name = data.name;
     this.year = data.year;
+    this.imageLink = data.imageLink || 'https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/217490_1397241168487_6340158_n.jpg';
   }
   
   /**
@@ -19,6 +20,8 @@ Clementine.add('klm.models', function(exports) {
     this.firstName = data.firstName;
     this.lastName = data.lastName;
     this.gender = data.gender;
+    this.imageLink = data.imageLink || 'https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/217490_1397241168487_6340158_n.jpg';
+    this.actorUrl = data.actorUrl || 'https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/217490_1397241168487_6340158_n.jpg';
   }
   
   // Exports

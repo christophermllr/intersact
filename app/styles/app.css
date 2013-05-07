@@ -126,6 +126,11 @@ header {
   width: 600px;
 }
 
+.result-list img.actor-image {
+  margin-right: 10px;
+  max-height: 44px;
+}
+
 .result-list li {
   height: 44px;
   line-height: 44px;
