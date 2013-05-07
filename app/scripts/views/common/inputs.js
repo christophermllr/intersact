@@ -295,7 +295,7 @@ Clementine.add('klm.views.common.inputs', function(exports) {
       list.show();
     
       for (var i=0; i<itemlist.length; i++) {
-        list.append('<li itemid="' + itemlist[i].id + '"><img class="actor-image" src="' + itemlist[i].imageLink + '"></img>' + itemlist[i].name + ' (' + itemlist[i].year + ')</li>');        
+        list.append('<li itemid="' + itemlist[i].id + '"><img class="image" src="' + itemlist[i].imageLink + '"></img>' + itemlist[i].name + ' (' + itemlist[i].year + ')</li>');        
       }
     
     }
