@@ -3,7 +3,7 @@
  @module Common
 */
 
-Clementine.add('usf.views.common.inputs', function(exports) {
+Clementine.add('klm.views.common.inputs', function(exports) {
 
   // Declarations
   
