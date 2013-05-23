@@ -30,6 +30,8 @@ Presentation
 - Started with some rough mockups using Paper on iPad down by the pool.
 - Found an old copy of IMDb (only movies before year 2000) and ported some of the tables into MySQL.
 - Decided on the interface and went about creating the backend API in Node and the front end to consume that API (mobile-first!)
-- We use a custom web framework called ClementineJS, written by Kevin available on GitHub, on the front end.
+- We use a custom web framework called [ClementineJS], written by Kevin available on GitHub, on the front end.
 
 ##DEMO
+
+[https://github.com/brew20k/orangeui]
