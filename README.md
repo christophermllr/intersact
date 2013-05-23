@@ -34,4 +34,4 @@ Presentation
 
 ##DEMO
 
-[https://github.com/brew20k/orangeui]
+[ClementineJS](https://github.com/brew20k/orangeui)
